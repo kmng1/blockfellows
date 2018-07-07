@@ -46,5 +46,7 @@ greet = async () => { const instance = await Greeter.deployed(); return instance
 (async () => { const instance = await Greeter.new("hi there"); return instance.greet.call(); })();
 (async () => { const instance = await Greeter.new("hi there"); return instance.address; })();
 Greeter.at('0x3d7fd3c4826ab7660a7012eedf478efa3694fd17').greet.call();
-web3.eth.accounts[0];
+
+web3.eth.getBalance(web3.eth.accounts[0]).toNumber();
+web3.eth.getAccounts((err, res) => console.log(res) );
 ```
