@@ -39,3 +39,12 @@ Once your greeter passes the test:
 2. Run `truffle console`. This will open up a Node JavaScript console that is connected to your testrpc server. Find a way to reference the Greeter smart contract that you deployed and call both the **Constructor** and **`greet()`** functions. [Truffle console docs](http://truffleframework.com/docs/getting_started/console)
 
 If your greeter returns "Hello World!" when prompted, then you have successfully completed the exercise. However, know that moving forward in the course, you will need to maximize your ability and knowledge of the tools and frameworks used in Ethereum Development.
+```
+Greeter.deployed().then( function(instance) { return instance.greet.call() } );
+greet = async () => { const instance = await Greeter.deployed(); return instance.greet.call(); }; greet();
+(async () => { const instance = await Greeter.deployed(); return instance.greet.call(); })();
+(async () => { const instance = await Greeter.new("hi there"); return instance.greet.call(); })();
+(async () => { const instance = await Greeter.new("hi there"); return instance.address; })();
+Greeter.at('0x3d7fd3c4826ab7660a7012eedf478efa3694fd17').greet.call();
+web3.eth.accounts[0];
+```
