@@ -19,7 +19,26 @@ contract Fibonacci {
 
     }
 
-    /* Add a fallback function to prevent contract payability and non-existent function calls */
+
+    function fibo(uint n) public pure returns (uint result) {
+    // recursive: https://github.com/web3j/web3j/blob/master/codegen/src/test/resources/solidity/fibonacci/Fibonacci.sol
+	// https://coursetro.com/posts/code/100/Solidity-Events-Tutorial---Using-Web3.js-to-Listen-for-Smart-Contract-Events 
+
+    event Notify(uint input, uint result);
+
+    function fibonacci(uint number) public view returns(uint result) {
+        if (number == 0) return 0;
+        else if (number == 1) return 1;
+        else return Fibonacci.fibonacci(number - 1) + Fibonacci.fibonacci(number - 2);
+    }
+
+    function fibonacciNotify(uint number) public returns(uint result) {
+        result = fibonacci(number);
+        emit Notify(number, result);
+    }
+
+
+	/* Add a fallback function to prevent contract payability and non-existent function calls */
     function () payable {
         revert();
     }
